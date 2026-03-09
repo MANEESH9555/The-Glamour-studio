@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Glamour Studio | Professional Makeup Artist</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lato:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --gold-gradient: linear-gradient(45deg, #bf953f, #fcf6ba, #b38728, #fcf6ba, #aa771c);
+        }
+
+        body { font-family: 'Lato', sans-serif; margin: 0; padding: 0; background-color: #ffffff; color: #333; line-height: 1.6; scroll-behavior: smooth; }
+        
+        /* --- Shiny Header --- */
+        header { background-color: #fff; padding: 15px 5%; display: flex; justify-content: center; align-items: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
+        
+        .logo-container { display: flex; align-items: center; gap: 15px; }
+        .logo-img { height: 70px; width: 70px; border-radius: 50%; border: 2px solid #d4af37; box-shadow: 0 0 15px rgba(212, 175, 55, 0.6); animation: logo-glow 2s infinite alternate; }
+
+        .studio-name { font-family: 'Great Vibes', cursive !important; font-size: clamp(30px, 5vw, 55px); margin: 0; display: flex; align-items: center; }
+        .black-text { color: #000; }
+        .shiny-gold { 
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: shine-animation 3s linear infinite;
+            padding: 0 10px;
+        }
+        
+        .hand-brush { font-size: 0.8em; color: #d4af37; animation: brush-float 3s ease-in-out infinite; }
+
+        @keyframes shine-animation { to { background-position: 200% center; } }
+        @keyframes logo-glow { from { box-shadow: 0 0 5px #d4af37; } to { box-shadow: 0 0 20px #d4af37; } }
+        @keyframes brush-float { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-10px) rotate(10deg); } }
+
+        nav { background-color: #111; padding: 12px; text-align: center; }
+        nav a { color: #fff; text-decoration: none; margin: 0 15px; font-weight: bold; font-size: 14px; transition: 0.3s; text-transform: uppercase; letter-spacing: 1px; }
+        nav a:hover { color: #d4af37; text-shadow: 0 0 8px #d4af37; }
+
+        /* --- Hero --- */
+        .hero { background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('makeup/work2.jpg.jpg'); background-size: cover; background-position: center; height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: white; }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5em, 8vw, 4em); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 3px; }
+
+        .cta-button { background: var(--gold-gradient); color: #000 !important; padding: 15px 40px; text-decoration: none; font-weight: bold; border-radius: 50px; transition: 0.4s; display: inline-block; margin-top: 25px; box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4); border: none; }
+        .cta-button:hover { transform: scale(1.1); box-shadow: 0 6px 20px rgba(212, 175, 55, 0.6); }
+
+        .container { width: 90%; max-width: 1100px; margin: auto; padding: 60px 0; }
+        .section-title { text-align: center; font-family: 'Playfair Display', serif; font-size: 2.5em; margin-bottom: 40px; color: #111; position: relative; }
+        .section-title::after { content: '✨'; display: block; font-size: 0.5em; margin-top: 10px; }
+
+        /* --- Pricing Section --- */
+        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+        .price-card { background: #fff; padding: 40px 25px; border-radius: 20px; border: 1px solid #f1f1f1; text-align: center; transition: 0.4s; position: relative; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        .price-card:hover { border-color: #d4af37; transform: translateY(-10px); }
+        .price-card i { font-size: 2.5em; color: #d4af37; margin-bottom: 15px; display: block; }
+        .price-amount { font-size: 2em; font-weight: bold; background: var(--gold-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+        /* --- Gallery Feel --- */
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; }
+        .gallery-item { position: relative; overflow: hidden; border-radius: 15px; cursor: pointer; height: 350px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: 1s cubic-bezier(0.2, 1, 0.3, 1); }
+        .gallery-item:hover img { transform: scale(1.2); filter: brightness(1.1) contrast(1.1); }
+        .gallery-item:active { transform: scale(0.95); }
+
+        /* --- Map Template --- */
+        .map-wrapper { position: relative; border-radius: 20px; overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.2); height: 400px; background: #222; }
+        .map-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(45deg, rgba(0,0,0,0.85), rgba(181, 142, 34, 0.4)); display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; transition: 0.6s; z-index: 5; cursor: pointer; }
+        .map-overlay:hover { background: rgba(0,0,0,0.6); }
+        .map-overlay i { font-size: 4em; color: #d4af37; margin-bottom: 20px; text-shadow: 0 0 15px #d4af37; }
+
+        /* --- Chatbot Girl Icon --- */
+        .chat-launcher { position: fixed; bottom: 25px; right: 25px; width: 65px; height: 65px; background: #fff; border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; z-index: 1001; box-shadow: 0 4px 15px rgba(0,0,0,0.3); border: 2px solid #d4af37; overflow: hidden; }
+        .chat-launcher img { width: 100%; height: 100%; object-fit: cover; }
+        
+        .chat-window { position: fixed; bottom: 100px; right: 25px; width: 320px; height: 450px; background: white; border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.2); display: none; flex-direction: column; z-index: 1001; overflow: hidden; }
+        .chat-header { background: var(--gold-gradient); color: #000; padding: 15px; display: flex; justify-content: space-between; font-weight: bold; }
+        .chat-body { flex: 1; padding: 15px; overflow-y: auto; background: #fffaf0; display: flex; flex-direction: column; gap: 10px; }
+        .msg { padding: 10px 14px; border-radius: 15px; font-size: 14px; max-width: 85%; }
+        .ai-msg { background: #eee; align-self: flex-start; }
+        .user-msg { background: #d4af37; color: white; align-self: flex-end; }
+
+        footer { background: #000; color: #777; text-align: center; padding: 25px; font-size: 13px; border-top: 1px solid #222; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <img src="makeup/logo.jpg1.png" alt="Logo" class="logo-img">
+            <h1 class="studio-name">
+                <span class="black-text">The</span>
+                <span class="shiny-gold">Glamour</span>
+                <span class="black-text">Studio</span>
+                <i class="fas fa-paint-brush hand-brush"></i>
+            </h1>
+        </div>
+    </header>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#pricing">Services</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <div id="home" class="hero">
+        <h1 class="shiny-gold" style="-webkit-text-fill-color: initial; background: var(--gold-gradient); -webkit-background-clip: text;">Luxury Makeup Artist</h1>
+        <p style="font-size: 1.2em; letter-spacing: 2px;">PERFECTION IN EVERY BRUSH STROKE</p>
+        <a href="https://wa.me/918587064332?text=Hello%20The%20Glamour%20Studio%2C%20I%20am%20interested%20in%20your%20services.%20Can%20you%20please%20help%20me%20with%20the%20booking%3F" class="cta-button">
+            <i class="fab fa-whatsapp"></i> BOOK ON WHATSAPP
+        </a>
+    </div>
+
+    <div class="container" id="pricing">
+        <h2 class="section-title">Our Signature Services</h2>
+        <div class="pricing-grid">
+            <div class="price-card">
+                <i class="fas fa-magic"></i>
+                <h3>Bridal HD <i class="fas fa-crown" style="font-size: 0.6em;"></i></h3>
+                <span class="price-amount">₹15,000/-</span>
+                <p>Airbrush Base, Premium Lashes & High-End Hair Styling.</p>
+            </div>
+            <div class="price-card">
+                <i class="fas fa-palette"></i>
+                <h3>Party Makeup <i class="fas fa-star" style="font-size: 0.6em;"></i></h3>
+                <span class="price-amount">₹3,500/-</span>
+                <p>Glamorous HD Look for any event or wedding function.</p>
+            </div>
+            <div class="price-card">
+                <i class="fas fa-gem"></i>
+                <h3>Engagement <i class="fas fa-ring" style="font-size: 0.6em;"></i></h3>
+                <span class="price-amount">₹8,000/-</span>
+                <p>Soft & Flawless look for your special ring ceremony.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="gallery">
+        <h2 class="section-title">Bridal Masterpieces</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item"><img src="makeup/work1.jpg.jpg" alt="Bridal"></div>
+            <div class="gallery-item"><img src="makeup/work2.jpg.jpg" alt="Engagement"></div>
+            <div class="gallery-item"><img src="makeup/work5.jpg.jpg" alt="Party Look"></div>
+            <div class="gallery-item"><img src="makeup/work6.jpg.jpg" alt="HD Look"></div>
+        </div>
+    </div>
+
+    <div style="background-color: #fafafa;">
+   <div class="tagembed-widget" style="width:100%;height:100%;overflow:auto;" data-widget-id="319247" data-website="1"></div><script src="https://widget.tagembed.com/embed.min.js" type="text/javascript"></script>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="contact">
+        <h2 class="section-title">Visit Our Studio</h2>
+        <div class="map-wrapper" onclick="window.open('https://maps.google.com/?q=The+Glamour+Studio+West+Patel+Nagar','_blank')">
+            <div class="map-overlay">
+                <i class="fas fa-map-marker-alt"></i>
+                <h3>G-47, West Patel Nagar, New Delhi</h3>
+                <p>Click to get the exact directions on Maps</p>
+            </div>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3501.536736237!2d77.1610!3d28.6515!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d029969695f2d%3A0x8673595b16954a2a!2sWest%20Patel%20Nagar!5e0!3m2!1sen!2sin!4v1700000000000" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </div>
+
+    <div class="chat-launcher" onclick="toggleChat()">
+        <img src="https://cdn-icons-png.flaticon.com/512/6997/6997662.png" alt="Artist">
+    </div>
+    
+    <div class="chat-window" id="chatWindow">
+        <div class="chat-header">
+            <span>✨ Glamour AI Assistant</span>
+            <i class="fas fa-times" onclick="toggleChat()" style="cursor:pointer;"></i>
+        </div>
+        <div class="chat-body" id="chatBody">
+            <div class="msg ai-msg">Welcome to The Glamour Studio! ✨ How can I help you today with your booking or pricing?</div>
+        </div>
+        <div class="chat-footer">
+            <input type="text" class="chat-input" id="userInput" placeholder="Ask me something..." onkeypress="if(event.key==='Enter')sendMessage()">
+            <button onclick="sendMessage()" style="border:none; background:none; color:#d4af37; font-size:18px; cursor:pointer;"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+    <footer>
+        <div style="margin-bottom: 15px;">
+            <a href="tel:+918587064332" style="color:#fff; margin:0 15px; font-size:1.5em;"><i class="fas fa-phone"></i></a>
+            <a href="https://www.instagram.com/babitamaurya201" target="_blank" style="color:#fff; margin:0 15px; font-size:1.5em;"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/918587064332?text=Hello The Glamour Studio I am interested in your services Can You Please help me with the booking service!" target="_blank" style="color:#fff; margin:0 15px; font-size:1.5em;"><i class="fab fa-whatsapp"></i></a>
+        </div>
+        <p>© 2026 The Glamour Studio. Redefining Beauty with Elegance.</p>
+    </footer>
+
+    <script>
+        function toggleChat() { 
+            let cw = document.getElementById("chatWindow"); 
+            cw.style.display = (cw.style.display === "flex") ? "none" : "flex"; 
+        }
+        function sendMessage() {
+            let input = document.getElementById("userInput");
+            let body = document.getElementById("chatBody");
+            if(input.value.trim() !== "") {
+                body.innerHTML += `<div class="msg user-msg">${input.value}</div>`;
+                let text = input.value.toLowerCase();
+                input.value = "";
+                setTimeout(() => {
+                    let reply = "Please contact +91 8587064332 for direct booking and more details! 💄";
+                    if(text.includes("bridal")) reply = "Our Bridal HD package starts at ₹15,000. It includes premium hair and draping. Should I book a slot for you?";
+                    if(text.includes("party")) reply = "Party makeup is ₹3,500. We use only high-end products to ensure a long-lasting glow! ✨";
+                    if(text.includes("location")) reply = "We are located at G-47 West Patel Nagar, New Delhi. You can find the exact map above! 📍";
+                    body.innerHTML += `<div class="msg ai-msg">${reply}</div>`;
+                    body.scrollTop = body.scrollHeight;
+                }, 800);
+                body.scrollTop = body.scrollHeight;
+            }
+        }
+    </script>
+</body>
+</html>
